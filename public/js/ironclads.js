@@ -8,6 +8,7 @@ var gameName = "testgame1";
 var playerName = "chris";
 var sound = new Audio();
 sound.src = './sounds/cannon1.mp3'; 
+var domainName = "critpen.com";
 
 ironcladsApp
 .config(
@@ -71,7 +72,7 @@ ironcladsApp
     $scope.getMyShips = function() {
         $scope.targetShips = [];
         $scope.shipsArray = [];
-        $http.get('http://localhost:3000/games/gamemeta/' + $scope.gameName, {})
+        $http.get('http://' + domainName + ':3000/games/gamemeta/' + $scope.gameName, {})
         .then(function(response){
             let shipsInGame = response.data.ships;
             for (let s=0; s<shipsInGame.length; s++) {
@@ -80,7 +81,7 @@ ironcladsApp
                 if (shipsInGame[s].player !== $scope.playerName) {
                     $scope.targetShips.push(shipName);
                 } else {
-                    $http.get('http://localhost:3000/games/ship/' + gameName + '/' + turn + '/' + shipName, {})
+                    $http.get('http://' + domainName + ':3000/games/ship/' + gameName + '/' + turn + '/' + shipName, {})
                     .then(function(response){
                         $scope.shipsArray.push(response.data);
                         globalShipsArray = $scope.shipsArray;    
@@ -120,7 +121,7 @@ ironcladsApp
             }
         };
 
-        $http.post("http://localhost:3000/fireShot", shotParams, {})
+        $http.post("http://' + domainName + ':3000/fireShot", shotParams, {})
                 .then(function(response) {
                     $scope.lastShotResponse = response;
         });
@@ -140,17 +141,17 @@ ironcladsApp
     var slides    = $scope.slides,
         currIndex = 0;
     $scope.slides.push({
-        image: 'http://localhost:3000/shipImages/columbia.JPG',
+        image: 'http://' + domainName + ':3000/shipImages/columbia.JPG',
         text: [''][slides.length % 0],
         id: currIndex++
     });
     $scope.slides.push({
-        image: 'http://localhost:3000/shipImages/onondaga.JPG',
+        image: 'http://' + domainName + ':3000/shipImages/onondaga.JPG',
         text: [''][slides.length % 0],
         id: currIndex++
     });
     $scope.slides.push({
-        image: 'http://localhost:3000/shipImages/ossipee.JPG',
+        image: 'http://' + domainName + ':3000/shipImages/ossipee.JPG',
         text: [''][slides.length % 0],
         id: currIndex++
     });

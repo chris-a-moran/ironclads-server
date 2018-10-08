@@ -1,0 +1,32 @@
+<style>
+    table, th , td {
+      border: 1px solid grey;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+    table tr:nth-child(odd) {
+      background-color: #f1f1f1;
+    }
+    table tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+</style>
+<div>
+    <div class="row" >
+        <table ng-table="tableParams" class="table table-condensed table-bordered table-striped">
+            <tr ng-repeat="notification in $data">
+                <td title="'File'" sortable="'fileNameAbout'">{{ notification.fileNameAbout }}</td>
+                <td title="'Id'">{{ notification.notificationId }}</td>
+                <td title="'Status'" sortable="'status'">{{ notification.status }}</td>
+                <td title="'Details'" sortable="'operationDetails'">{{ notification.operationDetails }}</td>
+                <td title="'Consumer'">
+                        <div ng-repeat="consumer in notification.consumers" class="row">
+                            <div class="col-md-2">{{ consumer.name }}</div>
+                            <div class="col-md-2">{{ consumer.notificationStatus }}</div>
+                            <div class="col-md-8">{{ consumer.address }}</div>
+                        </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

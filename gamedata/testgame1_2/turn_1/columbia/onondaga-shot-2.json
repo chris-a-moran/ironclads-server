@@ -1,0 +1,44 @@
+{
+    "target": "columbia",
+    "gun": "dahlgren15",
+    "rolls": {
+        "toHit": 3,
+        "hitEffect": 3,
+        "penetration": 0,
+        "criticalPenetration": 10,
+        "specialHit": 0
+    },
+    "fireType": "direct",
+    "shotType": "solidshot",
+    "rightLeft": "right",
+    "range": 3,
+    "penetrationFactor": 60,
+    "targetAspect": "broadside",
+    "positionOfHit": "casemate",
+    "sectionOfHit": "aftership",
+    "targetHit": true,
+    "turn": 1,
+    "damage": {
+        "penetration": false,
+        "criticalPenetration": {
+            "message": "",
+            "gunDestroyed": 0,
+            "engineRestart": []
+        },
+        "specialHit": {
+            "message": "",
+            "gunDestroyed": 0,
+            "gunDamaged": []
+        },
+        "armor": 6,
+        "hull": 4,
+        "crew": 4,
+        "floatation": 0,
+        "speed": 0,
+        "ram": 0,
+        "stack": 0,
+        "fires": [],
+        "turningCapacity": 0
+    },
+    "penetrationDifferential": 33
+}

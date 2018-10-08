@@ -1,0 +1,18 @@
+<div >
+    <div class="container">
+        <div id="shipCarousel" class="row">
+            <button type="button" class="btn btn-primary">Add Ship</button>
+        </div>
+        <div id="shipCarousel" class="row">
+          <div style="height: 305px">
+            <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+              <uib-slide ng-repeat="slide in slides" active="slide.active" index="slide.id">
+                <img ng-src="{{slide.image}}" style="margin:auto;">
+                <div class="carousel-caption">
+                </div>
+              </uib-slide>
+            </uib-carousel>
+          </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,4 @@
+To launch the code in debug mode from the command line:
+node --inspect app.js
+
+

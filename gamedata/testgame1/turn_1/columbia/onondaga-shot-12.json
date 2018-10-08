@@ -1,0 +1,46 @@
+{
+    "target": "columbia",
+    "gun": "brook10",
+    "rolls": {
+        "toHit": 7,
+        "hitEffect": 1,
+        "penetration": 0,
+        "criticalPenetration": 9,
+        "specialHit": 0
+    },
+    "fireType": "direct",
+    "shotType": "solidshot",
+    "hitEffectivenessPenaltyFromFires": 0,
+    "rightLeft": "right",
+    "range": 3,
+    "penetrationFactor": 36,
+    "targetAspect": "broadside",
+    "gunDamaged": false,
+    "positionOfHit": "casemate",
+    "sectionOfHit": "foreship",
+    "targetHit": true,
+    "turn": 1,
+    "damage": {
+        "penetration": false,
+        "criticalPenetration": {
+            "message": "",
+            "gunDestroyed": 0,
+            "engineRestart": []
+        },
+        "specialHit": {
+            "message": "",
+            "gunDestroyed": 0,
+            "gunDamaged": []
+        },
+        "armor": 6,
+        "hull": 3,
+        "crew": 5,
+        "floatation": 2,
+        "speed": 0,
+        "ram": 0,
+        "stack": 0,
+        "fires": [],
+        "turningCapacity": 0
+    },
+    "penetrationDifferential": 9
+}

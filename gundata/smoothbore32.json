@@ -1,0 +1,21 @@
+{
+    "gunType":"smoothbore32",
+    "ROF":1,
+    "pfShot":3,
+    "pfShell":3,
+    "rangeSS": [
+        ["range 1",2,3],
+        ["range 2",3,3],
+        ["range 3",4,3],
+        ["range 4",5,2],
+        ["range 5",6,2],
+        ["range 6",6,2],
+        ["range 7",7,1],
+        ["range 8",8,1],
+        ["range 9",9,1]
+    ],
+    "rangeGS": [
+        ["range 1",2,3],
+        ["range 2",1,3]
+    ]
+}

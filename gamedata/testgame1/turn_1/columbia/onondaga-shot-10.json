@@ -1,0 +1,44 @@
+{
+    "target": "columbia",
+    "gun": "dahlgren15",
+    "rolls": {
+        "toHit": 9,
+        "hitEffect": 3,
+        "penetration": 0,
+        "criticalPenetration": 3,
+        "specialHit": 0
+    },
+    "fireType": "direct",
+    "shotType": "solidshot",
+    "rightLeft": "right",
+    "range": 3,
+    "penetrationFactor": 60,
+    "targetAspect": "broadside",
+    "positionOfHit": "waterline",
+    "sectionOfHit": "stern",
+    "targetHit": true,
+    "turn": 1,
+    "damage": {
+        "penetration": false,
+        "criticalPenetration": {
+            "message": "Critical Penetration: Steering damaged. Turning capacity reduced to 1/1 at any speed",
+            "gunDestroyed": 0,
+            "engineRestart": []
+        },
+        "specialHit": {
+            "message": "",
+            "gunDestroyed": 0,
+            "gunDamaged": []
+        },
+        "armor": 3,
+        "hull": 8,
+        "crew": 2,
+        "floatation": 3,
+        "speed": 0,
+        "ram": 0,
+        "stack": 0,
+        "fires": [],
+        "turningCapacity": 1
+    },
+    "penetrationDifferential": 33
+}

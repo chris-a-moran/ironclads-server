@@ -1,0 +1,46 @@
+{
+    "target": "onondaga",
+    "gun": "brook2b7",
+    "rolls": {
+        "toHit": 5,
+        "hitEffect": 6,
+        "penetration": 0,
+        "criticalPenetration": 0,
+        "specialHit": 0
+    },
+    "fireType": "direct",
+    "shotType": "solidshot",
+    "hitEffectivenessPenaltyFromFires": 0,
+    "rightLeft": "right",
+    "range": 1,
+    "penetrationFactor": 30,
+    "targetAspect": "turret",
+    "gunDamaged": false,
+    "positionOfHit": "turretA",
+    "sectionOfHit": "left midship",
+    "targetHit": true,
+    "turn": 1,
+    "damage": {
+        "penetration": false,
+        "criticalPenetration": {
+            "message": "",
+            "gunDestroyed": 0,
+            "engineRestart": []
+        },
+        "specialHit": {
+            "message": "",
+            "gunDestroyed": 0,
+            "gunDamaged": []
+        },
+        "armor": 0,
+        "hull": 0,
+        "crew": 0,
+        "floatation": 0,
+        "speed": 0,
+        "ram": 0,
+        "stack": 0,
+        "fires": [],
+        "turningCapacity": 0
+    },
+    "penetrationDifferential": null
+}

@@ -1,0 +1,46 @@
+{
+    "target": "onondaga",
+    "gun": "brook10",
+    "rolls": {
+        "toHit": 8,
+        "hitEffect": 1,
+        "penetration": 0,
+        "criticalPenetration": 11,
+        "specialHit": 0
+    },
+    "fireType": "direct",
+    "shotType": "solidshot",
+    "hitEffectivenessPenaltyFromFires": 0,
+    "rightLeft": "right",
+    "range": 1,
+    "penetrationFactor": 36,
+    "targetAspect": "broadside",
+    "gunDamaged": false,
+    "positionOfHit": "waterline",
+    "sectionOfHit": "foreship",
+    "targetHit": true,
+    "turn": 1,
+    "damage": {
+        "penetration": false,
+        "criticalPenetration": {
+            "message": "",
+            "gunDestroyed": 0,
+            "engineRestart": []
+        },
+        "specialHit": {
+            "message": "",
+            "gunDestroyed": 0,
+            "gunDamaged": []
+        },
+        "armor": 7,
+        "hull": 0,
+        "crew": 3,
+        "floatation": 3,
+        "speed": 2,
+        "ram": 0,
+        "stack": 0,
+        "fires": [],
+        "turningCapacity": 0
+    },
+    "penetrationDifferential": 15
+}

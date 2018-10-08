@@ -1,0 +1,22 @@
+{
+    "players": [
+        "chris",
+        "connor"
+    ],
+    "turn": 0,
+    "ships": [
+        {
+            "name": "columbia.json",
+            "player": "chris"
+        },
+        {
+            "name": "ossipee.json",
+            "player": "chris"
+        },
+        {
+            "name": "onondaga.json",
+            "player": "connor"
+        }
+    ],
+    "controllingPlayer": "chris"
+}

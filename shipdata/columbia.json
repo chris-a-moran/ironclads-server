@@ -1,0 +1,110 @@
+{
+    "shipname":"C.S.S. Columbia",
+    "vesselType":"Casemate",
+    "filename":"columbia.json",
+    "casemate": {
+        "bow":27,
+        "foreship": {
+             "left":27,
+             "right":27
+        },
+        "midship": {
+            "left":27,
+            "right":27
+        },
+        "aftership": {
+            "left":27,
+            "right":27
+        },
+        "stern":27
+    },
+    "waterline":{
+        "bow":{
+            "left":33,
+            "right":33
+        },
+        "foreship":{
+            "left":27,
+            "right":27
+            },
+        "midship":{
+            "left":27,
+            "right":27
+        },
+        "aftership":{
+            "left":27,
+            "right":27
+        },
+        "stern":{
+            "left":27,
+            "right":27
+        }
+    },
+    "deck":{
+    "bow":10,
+    "foreship":10,
+    "midship":10,
+    "aftership":10,
+    "stern":10
+    },
+    "originalHull":52,
+    "hull":52,
+    "hullDamage":[
+        [26,2,0],
+        [39,2,1],
+        [47,3,2],
+        [52,3,3]
+    ],
+    "originalFloatation":15,
+    "floatation":15,
+    "floatationDamage":[
+        [4,1],
+        [7,1],
+        [11,2]
+    ],
+    "originalStack":4,
+    "stack":4,
+    "stackDamage":[
+        [3,1],
+        [4,1]
+    ],
+    "crew":36,
+    "ram":[100,75,50,25],
+    "originalMaxSpeed":5,
+    "forwardSpeed":[1,2,3,3,4,4,5,5],
+    "reverseSpeed":[1,2,3,3],
+    "engineCapacity":1,
+    "emergencyEngineCapacity":2,
+    "fires":[],
+    "hptFromFires": 0,
+    "hitEffectivenessPenaltyFromFires": 0,
+    "damageReport": [],
+    "armament":{
+        "bow":{
+            "left":{},
+            "pivot":{"first": {"name": "brook10", "status": "good"}},
+            "right":{}
+        },
+        "foreship":{
+            "left":{"first": {"name": "brook2b7", "status": "good"}},
+            "pivot":{},
+            "right":{"first": {"name": "brook2b7", "status": "good"}}
+        },
+        "midship":{
+            "left":{"first":{"name": "brook2b6", "status": "good"}},
+            "pivot":{},
+            "right":{"first":{"name": "brook2b6", "status": "good"}}
+        },
+        "aftership":{
+            "left":{},
+            "pivot":{},
+            "right":{}
+        },
+        "stern":{
+            "left":{},
+            "pivot":{"first": {"name": "brook2b7", "status": "good"}},
+            "right":{}
+        }
+    }
+}
+

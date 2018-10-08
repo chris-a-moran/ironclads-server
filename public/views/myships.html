@@ -1,0 +1,751 @@
+<div ng-controller="MyShipsController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <label class="btn btn-default" ng-click="getMyShips()">get ships</label>
+            </div>
+        </div>
+        <div class="row" ng-repeat='ship in shipsArray'>
+            <div class="col-md-12 ship">
+                <div class="row"><h3>{{ship.shipname }} ({{ship.vesselType }})</h3></div>
+                <div class="row" >
+                    <div class="col-md-3">
+                        <H4>Hull</H4> {{ship.hull }}
+                    </div>
+                    <div class="col-md-3">
+                        <H4>Floatation</H4> {{ship.floatation }}
+                    </div>
+                    <div class="col-md-3">
+                        <H4>Crew</H4> {{ship.crew }}
+                    </div>
+                    <div class="col-md-3">
+                        <H4>Stack</H4> {{ship.crew }}
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="col-md-4">
+                        <div class ="row"><H4>Forward Speed</H4></div>
+                        <div class ="row"><div class="col-md-1" ng-repeat='speed in ship.forwardSpeed track by $index'>{{speed}}</div></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class ="row"><H4>Reverse Speed</H4></div>
+                        <div class ="row"><div class="col-md-1" ng-repeat='speed in ship.reverseSpeed track by $index'>{{speed}}</div></div>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+                <div class ="row">
+                    <div id="gunplacement" class="col-md-6">
+                        <div ng-if="shipIsWV(ship)">
+                            <div class ="row">
+                                <div id="rightbow" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'bow', 'right')" ng-repeat="(key, item) in ship.armament.bow.right">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="rightforeship" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'foreship', 'right')" ng-repeat="(key, item) in ship.armament.foreship.right">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                </div>
+                                <div id="rightmidship" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'midship', 'right')" ng-repeat="(key, item) in ship.armament.midship.right">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="rightaftership" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'aftership', 'right')" ng-repeat="(key, item) in ship.armament.aftership.right">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="rightstern" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'stern', 'right')" ng-repeat="(key, item) in ship.armament.stern.right">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class ="row">
+                                <div id="pivotbow" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'bow', 'pivot')" ng-repeat="(key, item) in ship.armament.bow.pivot">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/pivot-forward.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/pivot-forward-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/pivot-forward-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="pivotforeship" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'foreship', 'pivot')" ng-repeat="(key, item) in ship.armament.foreship.pivot">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/pivot-forward.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/pivot-forward-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/pivot-forward-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="pivotmidship" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'midship', 'pivot')" ng-repeat="(key, item) in ship.armament.midship.pivot">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/pivot-forward.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/pivot-forward-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/pivot-forward-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="pivotaftership" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'aftership', 'pivot')" ng-repeat="(key, item) in ship.armament.aftership.pivot">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/pivot-aft.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/pivot-aft-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/pivot-aft-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="pivotstern"  class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'stern', 'pivot')" ng-repeat="(key, item) in ship.armament.stern.pivot">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class ="row">
+                                <div id="leftbow" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'bow', 'left')" ng-repeat="(key, item) in ship.armament.bow.left">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="leftforeship" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'bow', 'left')" ng-repeat="(key, item) in ship.armament.bow.left">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="leftmidship" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'midship', 'left')" ng-repeat="(key, item) in ship.armament.midship.left">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="leftaftership" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'aftership', 'left')" ng-repeat="(key, item) in ship.armament.aftership.left">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="leftstern" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'stern', 'left')" ng-repeat="(key, item) in ship.armament.stern.left">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="shipIsCasemate(ship)">
+                            <div class ="row">
+                                <div id="rightbow" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'bow', 'right')" ng-repeat="(key, item) in ship.armament.bow.right">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'bow', 'right')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                                <div id="rightforeship" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'foreship', 'right')" ng-repeat="(key, item) in ship.armament.foreship.right">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'foreship', 'right')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                                <div id="rightmidship" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'midship', 'right')" ng-repeat="(key, item) in ship.armament.midship.right">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'midship', 'right')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                                <div id="rightaftership" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'aftership', 'right')" ng-repeat="(key, item) in ship.armament.aftership.right">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'aftership', 'right')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                                <div id="rightstern" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'stern', 'right')" ng-repeat="(key, item) in ship.armament.stern.right">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/right-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'stern', 'right')" ng-click="fireShot(ship.armament.stern.right)"><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                            </div>
+                            <div class ="row">
+                                
+                                <div id="pivotbow" class ="col-md-2 gun-div" >
+                                    <div ng-if="gunInSection(ship, 'bow', 'pivot')" ng-repeat="(key, item) in ship.armament.bow.pivot">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-fore-pivot.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-fore-pivot-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-fore-pivot-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'bow', 'pivot')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                                
+                                <div id="pivotforeship" class ="col-md-2 gun-div" >
+                                    <div ng-if="gunInSection(ship, 'foreship', 'pivot')" ng-repeat="(key, item) in ship.armament.foreship.pivot">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-fore-pivot.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-fore-pivot-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-fore-pivot-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'foreship', 'pivot')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                                
+                                <div id="pivotmidship" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'midship', 'pivot')" ng-repeat="(key, item) in ship.armament.midship.pivot">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-fore-pivot.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-fore-pivot-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-fore-pivot-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'midship', 'pivot')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                                
+                                <div id="pivotaftership" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'aftership', 'pivot')" ng-repeat="(key, item) in ship.armament.aftership.pivot">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-aft-pivot.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-aft-pivot-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-aft-pivot-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'aftership', 'pivot')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                                <div id="pivotstern" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'stern', 'pivot')" ng-repeat="(key, item) in ship.armament.stern.pivot">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-aft-pivot.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-aft-pivot-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/casemate-aft-pivot-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'stern', 'pivot')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                                
+                            </div>
+                            <div class ="row">
+                                <div id="leftbow" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'bow', 'left')" ng-repeat="(key, item) in ship.armament.bow.left">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'bow', 'left')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                                <div id="leftforeship" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'foreship', 'left')" ng-repeat="(key, item) in ship.armament.foreship.left">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'foreship', 'left')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                                <div id="leftmidship" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'midship', 'left')" ng-repeat="(key, item) in ship.armament.midship.left">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'midship', 'left')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                                <div id="leftaftership" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'aftership', 'left')" ng-repeat="(key, item) in ship.armament.aftership.left">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'aftership', 'left')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                                <div id="leftstern" class ="col-md-2 gun-div">
+                                    <div ng-if="gunInSection(ship, 'stern', 'left')" ng-repeat="(key, item) in ship.armament.stern.left">
+                                        <div ng-if="item.status === 'good'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'damaged'">
+                                            <div ng-click="fireShot(ship, item)" uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-damaged.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                        <div ng-if="item.status === 'destroyed'">
+                                            <div uib-popover={{item.name}} popover-trigger="mouseenter" type="text" ng-model="item.name">
+                                                <img src="images/left-destroyed.png" height="40" width="40"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!gunInSection(ship, 'stern', 'left')" ><img src="images/blank.png" height="40" width="40"/></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="shipIsMonitor(ship)">
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class ="col-md-3">Target: 
+                        <input uib-popover="Name of the ship being targeted" popover-trigger="mouseenter" type="text" class="form-control" ng-model="shotParams.target" 
+                          placeholder="unknown" uib-typeahead="shipName for shipName in getTargetShips()" typeahead-loading="loadingShips" typeahead-no-results="noTargetResults"/>
+                        </div>
+                        <div class ="col-md-3">Range: <input uib-popover="Range to the ship being targeted" popover-trigger="mouseenter" type="text" ng-model="shotParams.range" class="form-control" /></div>
+                        <div class ="col-md-3">Shot Number: {{shotParams.shotnumber}}</div>
+                        <div class ="col-md-3">
+                            <div class="dropdown">
+                                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="shotParams.rightLeft">Side
+                                  <span class="caret"></span></button>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="#">right</a></li>
+                                    <li><a href="#">left</a></li>
+                                  </ul>
+                            </div>
+                            <div class ="col-md-3"></div>
+                            <div class ="col-md-3"></div>
+                        </div>
+                    </div>
+                </div>    
+                <div class="row">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lastShotResults">
+                      Shot Results
+                    </button>
+                </div>
+                <div class="modal fade" id="lastShotResults" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">  
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="shotResultsTitle">Shot Results</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                            <div class="modal-body">
+                                <div class ="row">
+                                    <div class ="col-md-2">Target: {{lastShotResponse.data.target}}</div>
+                                    <div class ="col-md-2">gun: {{lastShotResponse.data.gun}}</div>
+                                    <div class ="col-md-2">toHit: {{lastShotResponse.data.rolls.toHit}}</div>
+                                    <div class ="col-md-2">hitEffect: {{lastShotResponse.data.rolls.hitEffect}}</div>
+                                    <div class ="col-md-2">penetration: {{lastShotResponse.data.rolls.penetration}}</div>
+                                    <div class ="col-md-2">specialHit: {{lastShotResponse.data.rolls.specialHit}}</div>
+                                </div>
+                                <div class ="row">
+                                    <div class ="col-md-2">fireType: {{lastShotResponse.data.fireType}}</div>
+                                    <div class ="col-md-2">shotType: {{lastShotResponse.data.shotType}}</div>
+                                    <div class ="col-md-2">hitEffectivenessPenaltyFromFires: {{lastShotResponse.data.hitEffectivenessPenaltyFromFires}}</div>
+                                    <div class ="col-md-2">rightLeft: {{lastShotResponse.data.rightLeft}}</div>
+                                    <div class ="col-md-2">range: {{lastShotResponse.data.range}}</div>
+                                    <div class ="col-md-2">penetrationFactor: {{lastShotResponse.data.penetrationFactor}}</div>
+                                </div>
+                                <div class ="row">
+                                    <div class ="col-md-2">targetAspect: {{lastShotResponse.data.targetAspect}}</div>
+                                    <div class ="col-md-2">gunDamaged: {{lastShotResponse.data.gunDamaged}}</div>
+                                    <div class ="col-md-2">turn: {{lastShotResponse.data.turn}}</div>
+                                    <div class ="col-md-2">positionOfHit: {{lastShotResponse.data.positionOfHit}}</div>
+                                    <div class ="col-md-2">sectionOfHit: {{lastShotResponse.data.sectionOfHit}}</div>
+                                    <div class ="col-md-2">targetHit: {{lastShotResponse.data.targetHit}}</div>
+                                </div>
+                                <div class ="row">
+                                    <div class ="col-md-2">penetration: {{lastShotResponse.data.damage.penetration}}</div>
+                                    <div class ="col-md-2">gunDamaged: {{lastShotResponse.damage}}</div>
+                                    <div class ="col-md-2">criticalPenetration message: {{lastShotResponse.data.damage.criticalPenetration.message}}</div>
+                                    <div class ="col-md-2">gunDestroyed: {{lastShotResponse.data.damage.criticalPenetration.gunDestroyed}}</div>
+                                    <div class ="col-md-2">engineRestart: {{lastShotResponse.data.damage.criticalPenetration.engineRestart}}</div>
+                                    <div class ="col-md-2">specialHit message: {{lastShotResponse.data.damage.specialHit.message}}</div>
+                                </div>
+                                <div class ="row">
+                                    <div class ="col-md-2">specialHit message: {{lastShotResponse.damage.data.specialHit.message}}</div>
+                                    <div class ="col-md-2">specialHit gunDestroyed: {{lastShotResponse.data.damage.specialHit.gunDestroyed}}</div>
+                                    <div class ="col-md-2">specialHit gunDamaged: {{lastShotResponse.data.damage.specialHit.gunDamaged}}</div>
+                                    <div class ="col-md-2"></div>
+                                    <div class ="col-md-2"></div>
+                                    <div class ="col-md-2"></div>
+                                </div>
+                                <div class ="row">
+                                    <div class ="col-md-2">armor: {{lastShotResponse.data.damage.armor}}</div>
+                                    <div class ="col-md-2">hull: {{lastShotResponse.data.damage.hull}}</div>
+                                    <div class ="col-md-2">crew: {{lastShotResponse.data.damage.crew}}</div>
+                                    <div class ="col-md-2">floatation: {{lastShotResponse.data.damage.floatation}}</div>
+                                    <div class ="col-md-2">speed: {{lastShotResponse.data.damage.speed}}</div>
+                                    <div class ="col-md-2">ram: {{lastShotResponse.data.damage.ram}}</div>
+                                </div>
+                                <div class ="row">
+                                    <div class ="col-md-2">stack: {{lastShotResponse.data.damage.stack}}</div>
+                                    <div class ="col-md-2">fires: {{lastShotResponse.data.damage.fires}}</div>
+                                    <div class ="col-md-2">turningCapacity: {{lastShotResponse.data.damage.turningCapacity}}</div>
+                                    <div class ="col-md-2">penetrationDifferential: {{lastShotResponse.data.penetrationDifferential}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+                </div>
+            </div>
+        </div> 
+        <div class="col-md-12">
+
+        </div>
+    </div>
+</div>
+    

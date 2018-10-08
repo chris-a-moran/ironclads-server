@@ -1,0 +1,3 @@
+Need to add code to handle possible gun explosion that results from a gun being fired when damaged.
+Currently, the damage code is added to the to the gun in the damageGun function of the specialHit.js module
+Either the fireShot post can create a damage file for the attacker, or the client can invoke a second call to a special post.

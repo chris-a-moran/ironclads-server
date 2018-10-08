@@ -1,0 +1,31 @@
+{
+    "gunType":"dahlgren11",
+    "ROF":0.5,
+    "pfShot":10,
+    "pfShell":9,
+    "rangeSS": [
+        ["range 1",2,3],
+        ["range 2",3,3],
+        ["range 3",3,3],
+        ["range 4",4,3],
+        ["range 5",5,2],
+        ["range 6",5,2],
+        ["range 7",5,2],
+        ["range 8",6,2],
+        ["range 9",6,2],
+        ["range 10",6,2],
+        ["range 11",7,2],
+        ["range 12",7,2],
+        ["range 13",8,1],
+        ["range 14",9,1],
+        ["range 15",9,1],
+        ["range 16",10,1],
+        ["range 17",10,1],
+        ["range 18",10,1]
+    ],
+    "rangeGS": [
+        ["range 1",4,3],
+        ["range 2",3,3],
+        ["range 3",2,3]
+    ]
+}

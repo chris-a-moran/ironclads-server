@@ -1,0 +1,92 @@
+{
+    "shipname":"U.S.S. Onondaga",
+    "vesselType":"Monitor",
+    "filename":"onondaga.json",
+    "waterline": {
+        "bow": {
+            "left":24,
+            "right":24
+        },
+        "foreship": {
+            "left":21,
+            "right":21
+        },
+        "midship": {
+            "left":21,
+            "right":21
+        },
+        "aftership": {
+            "left":21,
+            "right":21
+        },
+        "stern": {
+            "left":21,
+            "right":21
+        }
+    },
+    "turretA": {
+        "foreship":24,
+        "midship": {
+            "left":24,
+            "right":24
+        },
+        "aftership":24
+    },
+    "turretZ": {
+        "foreship":24,
+        "midship": {
+            "left":24,
+            "right":24
+        },
+        "aftership":24
+    },
+    "deck": {
+        "bow":14,
+        "foreship":14,
+        "midship":14,
+        "aftership":14,
+        "stern":14
+    },
+    "originalHull": 52,
+    "hull":52,
+    "hullDamage": [
+        [26,1,2],
+        [39,2,2],
+        [47,2,2],
+        [52,3,2]
+    ],
+    "originalFloatation": 14,
+    "floatation":14,
+    "floatationDamage": [
+        [4,2],
+        [7,2],
+        [11,3]
+    ],
+    "originalStack":16,
+    "stack":16,
+    "stackDamage": [
+        [8,1],
+        [16,2]
+    ],
+    "crew":30,
+    "ram":[30,15,5],
+    "originalMaxSpeed": 7,
+    "forwardSpeed":[1,2,3,4,5,6,6,7,7],
+    "reverseSpeed":[1,2,3,4],
+    "engineCapacity":2,
+    "emergencyEngineCapacity":3,
+    "fires":[],
+    "hptFromFires": 0,
+    "hitEffectivenessPenaltyFromFires": 0,
+    "damageReport": [],
+    "armament": {
+        "turretA": {
+            "left":{"name": "dahlgren15", "status": "good"},
+            "right":{"name": "parrot150", "status": "good"}
+        },
+        "turretZ": {
+            "left":{"name": "dahlgren15", "status": "good"},
+            "right":{"name": "parrot150", "status": "good"}
+        }
+    }
+}

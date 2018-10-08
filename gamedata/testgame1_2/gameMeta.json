@@ -1,0 +1,18 @@
+{
+    "players": [
+        "chris",
+        "connor"
+    ],
+    "turn": 1,
+    "ships": [
+        {
+            "name": "columbia",
+            "player": "chris"
+        },
+        {
+            "name": "onondaga",
+            "player": "connor"
+        }
+    ],
+    "controllingPlayer": "chris"
+}

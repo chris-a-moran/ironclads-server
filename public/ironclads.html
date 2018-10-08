@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="ironcladsApp">
+    <head>
+        <title>Ironclads</title>
+        <LINK REL="SHORTCUT ICON" Href="images/pivot-forward.png" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="lib/angular.js"></script>
+        <script src="lib/angular-route.js"></script>
+        <script src="lib/angular-resource.js"></script>
+        <script src="lib/ng-table.js"></script>
+        <script src="js/ironclads.js"></script>
+        <script src="js/ui-bootstrap-tpls-0.14.3.js"></script>
+        <link rel='stylesheet' href='css/bootstrap.css'/>
+        <link rel='stylesheet' href='css/ng-table.css'/>
+        <link rel='stylesheet' href='css/ironclads.css'/>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div id="banner" class="row">
+                <div class="col-md-2">
+                    <img src="images/pivot-forward.png" height="50" width="50"/>
+                </div>
+                <div class="col-md-3">
+                    <h1>Ironclads</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#/mapsview">Map</a></li>
+                    <li><a href="#/myshipsview">My Ships</a></li>
+                    <li><a href="#/shipsview">Ships</a></li>
+                  </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body"><div ng-view=""></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

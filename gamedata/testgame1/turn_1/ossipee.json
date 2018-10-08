@@ -1,0 +1,111 @@
+{
+    "shipname":"U.S.S. Ossipee",
+    "vesselType":"WoodenVessel",
+    "filename":"ossipee.json",
+    "hullArmor":{
+        "bow":{
+            "left":6,
+            "right":6
+        },
+        "foreship":{
+            "left":6,
+            "right":6
+        },
+        "midship":{
+            "left":7,
+            "right":7
+        },
+        "aftership":{
+            "left":6,
+            "right":6
+        },
+        "stern":{
+            "left":6,
+            "right":6
+        }
+    },
+    "waterline":{
+        "bow":{
+            "left":6,
+            "right":6
+        },"foreship":{
+            "left":6,
+            "right":6
+        },"midship":{
+            "left":7,
+            "right":7
+        },"aftership":{
+            "left":6,
+            "right":6
+        },
+        "stern":{
+            "left":6,
+            "right":6
+        }
+    },
+    "deck":{
+        "bow":4,
+        "foreship":4,
+        "midship":4,
+        "aftership":4,
+        "stern":4
+    },
+    "originalHull":37,
+    "hull":37,
+    "hullDamage":[
+        [19,2,1],
+        [27,2,2],
+        [33,3,2],
+        [37,3,2]
+    ],
+    "originalFloatation":12,
+    "floatation":12,
+    "floatationDamage":[
+        [3,1],
+        [6,2],
+        [9,4]
+    ],
+    "originalStack":4,
+    "stack":4,
+    "stackDamage":[
+        [3,1],
+        [4,1]
+    ],
+    "crew":28,
+    "ram":[12,6,2],
+    "originalMaxSpeed":9,
+    "forwardSpeed":[1,2,3,4,5,5,6,6,7,8,9],
+    "reverseSpeed":[1,2,3,4],
+    "engineCapacity":2,
+    "emergencyEngineCapacity":3,
+    "fires":[],
+    "hptFromFires": 0,
+    "hitEffectivenessPenaltyFromFires": 0,
+    "damageReport": [],
+    "armament":{
+        "bow":{
+            "left":[],
+             "pivot":[{"name": "parrot30", "status": "good"}],
+             "right":[]
+        },
+        "foreship":{
+            "left":[{"name": "parrot30", "status": "good"}],
+            "pivot":[{"name": "parrot100", "status": "good"}],
+            "right":[{"name": "parrot30", "status": "good"}]
+        },
+        "midship":{
+            "left":[{"name": "smoothbore32", "status": "good"},{"name": "smoothbore32", "status": "good"},{"name": "smoothbore32", "status": "good"}],
+            "pivot":[],
+            "right":[{"name": "smoothbore32", "status": "good"},{"name": "smoothbore32", "status": "good"},{"name": "smoothbore32", "status": "good"}]
+        },"aftership":{
+            "left":[],
+            "pivot":[{"name": "dahlgren11", "status": "good"}],
+            "right":[]
+        },
+        "stern":{
+            "left":[],
+            "pivot":[],
+            "right":[]
+        }
+    }
+}

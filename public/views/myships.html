@@ -655,23 +655,17 @@
                         <div class ="col-md-3">Shot Number: {{shotParams.shotnumber}}</div>
                         <div class ="col-md-3">
                             <div class="dropdown">
-                                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-model="shotParams.rightLeft">Side
-                                  <span class="caret"></span></button>
-                                  <ul class="dropdown-menu">
-                                    <li><a href="#">right</a></li>
-                                    <li><a href="#">left</a></li>
-                                  </ul>
+                                  Side
+                                  <input uib-popover="Name of the ship being targeted" popover-trigger="mouseenter" type="text" class="form-control" ng-model="shotParams.rightLeft" 
+                                      placeholder="unknown" uib-typeahead="side for side in ['right','left']" typeahead-loading="loadingShips" typeahead-no-results="noTargetResults"/>
+                                    </div>
                             </div>
                             <div class ="col-md-3"></div>
                             <div class ="col-md-3"></div>
                         </div>
                     </div>
                 </div>    
-                <div class="row">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lastShotResults">
-                      Shot Results
-                    </button>
-                </div>
+                
                 <div >  
                     <div >
                         <div >
@@ -683,58 +677,58 @@
                           </div>
                             <div class="modal-body">
                                 <div class ="row">
-                                    <div class ="col-md-2">Target: {{lastShotResponse.data.target}}</div>
-                                    <div class ="col-md-2">gun: {{lastShotResponse.data.gun}}</div>
-                                    <div class ="col-md-2">toHit: {{lastShotResponse.data.rolls.toHit}}</div>
-                                    <div class ="col-md-2">hitEffect: {{lastShotResponse.data.rolls.hitEffect}}</div>
-                                    <div class ="col-md-2">penetration: {{lastShotResponse.data.rolls.penetration}}</div>
-                                    <div class ="col-md-2">specialHit: {{lastShotResponse.data.rolls.specialHit}}</div>
+                                    <div class ="col-md-2"><h5>Target:</h5> {{lastShotResponse.data.target}}</div>
+                                    <div class ="col-md-2"><h5>gun:</h5> {{lastShotResponse.data.gun}}</div>
+                                    <div class ="col-md-2"><h5>toHit:</h5> {{lastShotResponse.data.rolls.toHit}}</div>
+                                    <div class ="col-md-2"><h5>hitEffect:</h5> {{lastShotResponse.data.rolls.hitEffect}}</div>
+                                    <div class ="col-md-2"><h5>penetration:</h5> {{lastShotResponse.data.rolls.penetration}}</div>
+                                    <div class ="col-md-2"><h5>specialHit:</h5> {{lastShotResponse.data.rolls.specialHit}}</div>
                                 </div>
                                 <div class ="row">
-                                    <div class ="col-md-2">fireType: {{lastShotResponse.data.fireType}}</div>
-                                    <div class ="col-md-2">shotType: {{lastShotResponse.data.shotType}}</div>
-                                    <div class ="col-md-2">hitEffectivenessPenaltyFromFires: {{lastShotResponse.data.hitEffectivenessPenaltyFromFires}}</div>
-                                    <div class ="col-md-2">rightLeft: {{lastShotResponse.data.rightLeft}}</div>
-                                    <div class ="col-md-2">range: {{lastShotResponse.data.range}}</div>
-                                    <div class ="col-md-2">penetrationFactor: {{lastShotResponse.data.penetrationFactor}}</div>
+                                    <div class ="col-md-2"><h5>fireType:</h5> {{lastShotResponse.data.fireType}}</div>
+                                    <div class ="col-md-2"><h5>shotType:</h5> {{lastShotResponse.data.shotType}}</div>
+                                    <div class ="col-md-2"><h5>hitEffectivenessPenaltyFromFires:</h5> {{lastShotResponse.data.hitEffectivenessPenaltyFromFires}}</div>
+                                    <div class ="col-md-2"><h5>rightLeft:</h5> {{lastShotResponse.data.rightLeft}}
+                                    <div class ="col-md-2"><h5>range: </h5>{{lastShotResponse.data.range}}</div>
+                                    <div class ="col-md-2"><h5>penetrationFactor:</h5> {{lastShotResponse.data.penetrationFactor}}</div>
                                 </div>
                                 <div class ="row">
-                                    <div class ="col-md-2">targetAspect: {{lastShotResponse.data.targetAspect}}</div>
-                                    <div class ="col-md-2">gunDamaged: {{lastShotResponse.data.gunDamaged}}</div>
-                                    <div class ="col-md-2">turn: {{lastShotResponse.data.turn}}</div>
-                                    <div class ="col-md-2">positionOfHit: {{lastShotResponse.data.positionOfHit}}</div>
-                                    <div class ="col-md-2">sectionOfHit: {{lastShotResponse.data.sectionOfHit}}</div>
-                                    <div class ="col-md-2">targetHit: {{lastShotResponse.data.targetHit}}</div>
+                                    <div class ="col-md-2"><h5>targetAspect:</h5> {{lastShotResponse.data.targetAspect}}</div>
+                                    <div class ="col-md-2"><h5>gunDamaged:</h5> {{lastShotResponse.data.gunDamaged}}</div>
+                                    <div class ="col-md-2"><h5>turn:</h5> {{lastShotResponse.data.turn}}</div>
+                                    <div class ="col-md-2"><h5>positionOfHit:</h5> {{lastShotResponse.data.positionOfHit}}</div>
+                                    <div class ="col-md-2"><h5>sectionOfHit:</h5> {{lastShotResponse.data.sectionOfHit}}</div>
+                                    <div class ="col-md-2"><h5>targetHit:</h5> {{lastShotResponse.data.targetHit}}</div>
                                 </div>
                                 <div class ="row">
-                                    <div class ="col-md-2">penetration: {{lastShotResponse.data.damage.penetration}}</div>
-                                    <div class ="col-md-2">gunDamaged: {{lastShotResponse.damage}}</div>
-                                    <div class ="col-md-2">criticalPenetration message: {{lastShotResponse.data.damage.criticalPenetration.message}}</div>
-                                    <div class ="col-md-2">gunDestroyed: {{lastShotResponse.data.damage.criticalPenetration.gunDestroyed}}</div>
-                                    <div class ="col-md-2">engineRestart: {{lastShotResponse.data.damage.criticalPenetration.engineRestart}}</div>
-                                    <div class ="col-md-2">specialHit message: {{lastShotResponse.data.damage.specialHit.message}}</div>
+                                    <div class ="col-md-2"><h5>penetration:</h5> {{lastShotResponse.data.damage.penetration}}</div>
+                                    <div class ="col-md-2"><h5>gunDamaged:</h5> {{lastShotResponse.damage}}</div>
+                                    <div class ="col-md-2"><h5>criticalPenetration message:</h5> {{lastShotResponse.data.damage.criticalPenetration.message}}</div>
+                                    <div class ="col-md-2"><h5>gunDestroyed:</h5> {{lastShotResponse.data.damage.criticalPenetration.gunDestroyed}}</div>
+                                    <div class ="col-md-2"><h5>engineRestart:</h5> {{lastShotResponse.data.damage.criticalPenetration.engineRestart}}</div>
+                                    <div class ="col-md-2"><h5>specialHit message:</h5> {{lastShotResponse.data.damage.specialHit.message}}</div>
                                 </div>
                                 <div class ="row">
-                                    <div class ="col-md-2">specialHit message: {{lastShotResponse.damage.data.specialHit.message}}</div>
-                                    <div class ="col-md-2">specialHit gunDestroyed: {{lastShotResponse.data.damage.specialHit.gunDestroyed}}</div>
-                                    <div class ="col-md-2">specialHit gunDamaged: {{lastShotResponse.data.damage.specialHit.gunDamaged}}</div>
+                                    <div class ="col-md-2"><h5>specialHit message:</h5> {{lastShotResponse.damage.data.specialHit.message}}</div>
+                                    <div class ="col-md-2"><h5>specialHit gunDestroyed:</h5> {{lastShotResponse.data.damage.specialHit.gunDestroyed}}</div>
+                                    <div class ="col-md-2"><h5>specialHit gunDamaged:</h5> {{lastShotResponse.data.damage.specialHit.gunDamaged}}</div>
                                     <div class ="col-md-2"></div>
                                     <div class ="col-md-2"></div>
                                     <div class ="col-md-2"></div>
                                 </div>
                                 <div class ="row">
-                                    <div class ="col-md-2">armor: {{lastShotResponse.data.damage.armor}}</div>
-                                    <div class ="col-md-2">hull: {{lastShotResponse.data.damage.hull}}</div>
-                                    <div class ="col-md-2">crew: {{lastShotResponse.data.damage.crew}}</div>
-                                    <div class ="col-md-2">floatation: {{lastShotResponse.data.damage.floatation}}</div>
-                                    <div class ="col-md-2">speed: {{lastShotResponse.data.damage.speed}}</div>
-                                    <div class ="col-md-2">ram: {{lastShotResponse.data.damage.ram}}</div>
+                                    <div class ="col-md-2"><h5>armor:</h5> {{lastShotResponse.data.damage.armor}}</div>
+                                    <div class ="col-md-2"><h5>hull:</h5> {{lastShotResponse.data.damage.hull}}</div>
+                                    <div class ="col-md-2"><h5>crew:</h5> {{lastShotResponse.data.damage.crew}}</div>
+                                    <div class ="col-md-2"><h5>floatation:</h5> {{lastShotResponse.data.damage.floatation}}</div>
+                                    <div class ="col-md-2"><h5>speed:</h5> {{lastShotResponse.data.damage.speed}}</div>
+                                    <div class ="col-md-2"><h5>ram: </h5>{{lastShotResponse.data.damage.ram}}</div>
                                 </div>
                                 <div class ="row">
-                                    <div class ="col-md-2">stack: {{lastShotResponse.data.damage.stack}}</div>
-                                    <div class ="col-md-2">fires: {{lastShotResponse.data.damage.fires}}</div>
-                                    <div class ="col-md-2">turningCapacity: {{lastShotResponse.data.damage.turningCapacity}}</div>
-                                    <div class ="col-md-2">penetrationDifferential: {{lastShotResponse.data.penetrationDifferential}}</div>
+                                    <div class ="col-md-2"><h5>stack:</h5> {{lastShotResponse.data.damage.stack}}</div>
+                                    <div class ="col-md-2"><h5>fires:</h5> {{lastShotResponse.data.damage.fires}}</div>
+                                    <div class ="col-md-2"><h5>turningCapacity:</h5> {{lastShotResponse.data.damage.turningCapacity}}</div>
+                                    <div class ="col-md-2"><h5>penetrationDifferential:</h5> {{lastShotResponse.data.penetrationDifferential}}</div>
                                 </div>
                             </div>
                         </div>
@@ -743,9 +737,6 @@
                 </div>
             </div>
         </div> 
-        <div class="col-md-12">
-
-        </div>
+        
     </div>
-</div>
     

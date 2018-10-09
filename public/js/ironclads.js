@@ -7,8 +7,8 @@ var turn = 1;
 var gameName = "testgame1";
 var playerName = "chris";
 var sound = new Audio();
-sound.src = './sounds/cannon1.mp3'; 
 var domainName = "critpen.com";
+//var domainName = "localhost";
 
 ironcladsApp
 .config(
@@ -121,12 +121,12 @@ ironcladsApp
             }
         };
 
-        $http.post("http://' + domainName + ':3000/fireShot", shotParams, {})
+        $http.post('http://' + domainName + ':3000/fireShot', shotParams, {})
                 .then(function(response) {
                     $scope.lastShotResponse = response;
         });
         shotnumber++;
-//        sound.src = './sounds/cannon1.mp3'; 
+        sound.src = './sounds/cannon1.mp3'; 
         sound.play();
         
     };

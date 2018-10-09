@@ -11,7 +11,8 @@ var gameMgmtRouter = require('./routes/gameMgmt');
 
 var bodyParser = require('body-parser');
 var port = 3000;
-var domainName = "localhost";
+var domainName = "critpen.com";
+//var domainName = "localhost";
 
 var app = express();
 var cors = require('cors');

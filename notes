@@ -1,4 +1,25 @@
-To launch the code in debug mode from the command line:
+# To launch the code in debug mode from the command line:
 node --inspect app.js
 
+# To launch the code in production mode from the command line:
+node app.js
 
+# To update all of the dependencies
+# This is needed the first time the project is cloned from github
+npm update
+
+# To do a docker build
+docker build -t cmoran/ironclads-server .
+
+# To see the image
+docker images
+
+
+# To run the image
+sudo docker run -p 3000:3000 cmoran/ironclads-server
+# To see running images
+sudo docker ps
+
+# To stop an image
+sudo docker stop <process id>
+ 

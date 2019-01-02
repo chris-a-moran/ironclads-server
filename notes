@@ -23,3 +23,17 @@ sudo docker ps
 # To stop an image
 sudo docker stop <process id>
  
+
+
+# Setting up https 
+
+# generate a .crt and .key file using the openssl command:
+
+openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out ironclads-server.crt -keyout ironclads-server.key
+
+# this will generate a new key and crt files named 'ironclads-server'. These two files are read when creating the https server in node
+
+# create the directory /run/secrets and move the .crt and .key files to this directory. This is the directory into which the certs will be injected into
+# the running container by the secrets manager. The secrets manager will also inject the production env.js file into /usr/src/app/public.
+
+

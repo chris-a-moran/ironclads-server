@@ -1,13 +1,21 @@
 'use strict';
 
+var env = {};
+// Import variables if present (from env.js)
+if(window){  
+  Object.assign(env, window.__env);
+}
+
 var ironcladsApp = angular.module("ironcladsApp", ['ngRoute', 'ngResource', 'ui.bootstrap', 'ngTable']);
+// Register environment in AngularJS as constant
+ironcladsApp.constant('__env', env);
 var globalShipsArray = [];
 var shotnumber = 1;
 var turn = 1;
 var gameName = "testgame1";
 var playerName = "chris";
 var sound = new Audio();
-var domainName = "critpen.com";
+//var domainName = "critpen.com";
 //var domainName = "localhost";
 
 ironcladsApp
@@ -28,7 +36,7 @@ ironcladsApp
            .otherwise({ redirectTo: '/myshipsview'});
         }
     ])
-.controller('MyShipsController', function($scope, $http) {
+.controller('MyShipsController', function($scope, $http, __env) {
     $scope.shipsArray = globalShipsArray;
     $scope.lastShotResponse = {};
     $scope.shotParams = {};
@@ -72,7 +80,7 @@ ironcladsApp
     $scope.getMyShips = function() {
         $scope.targetShips = [];
         $scope.shipsArray = [];
-        $http.get('http://' + domainName + ':3000/games/gamemeta/' + $scope.gameName, {})
+        $http.get(__env.apiUrl + '/games/gamemeta/' + $scope.gameName, {})
         .then(function(response){
             let shipsInGame = response.data.ships;
             for (let s=0; s<shipsInGame.length; s++) {
@@ -81,7 +89,7 @@ ironcladsApp
                 if (shipsInGame[s].player !== $scope.playerName) {
                     $scope.targetShips.push(shipName);
                 } else {
-                    $http.get('http://' + domainName + ':3000/games/ship/' + gameName + '/' + turn + '/' + shipName, {})
+                    $http.get(__env.apiUrl + '/games/ship/' + gameName + '/' + turn + '/' + shipName, {})
                     .then(function(response){
                         $scope.shipsArray.push(response.data);
                         globalShipsArray = $scope.shipsArray;    
@@ -121,7 +129,7 @@ ironcladsApp
             }
         };
 
-        $http.post('http://' + domainName + ':3000/fireShot', shotParams, {})
+        $http.post(__env.apiUrl + '/fireShot', shotParams, {})
                 .then(function(response) {
                     $scope.lastShotResponse = response;
         });
@@ -141,17 +149,17 @@ ironcladsApp
     var slides    = $scope.slides,
         currIndex = 0;
     $scope.slides.push({
-        image: 'http://' + domainName + ':3000/shipImages/columbia.JPG',
+        image: __env.apiUrl + '/shipImages/columbia.JPG',
         text: [''][slides.length % 0],
         id: currIndex++
     });
     $scope.slides.push({
-        image: 'http://' + domainName + ':3000/shipImages/onondaga.JPG',
+        image: __env.apiUrl + '/shipImages/onondaga.JPG',
         text: [''][slides.length % 0],
         id: currIndex++
     });
     $scope.slides.push({
-        image: 'http://' + domainName + ':3000/shipImages/ossipee.JPG',
+        image: __env.apiUrl + '/shipImages/ossipee.JPG',
         text: [''][slides.length % 0],
         id: currIndex++
     });

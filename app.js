@@ -4,6 +4,8 @@ var cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var fs = require('fs');
+var https = require('https');
 
 var indexRouter = require('./routes/index');
 var prototypeRouter = require('./routes/prototype');
@@ -11,12 +13,16 @@ var fireRouter = require('./routes/fireShot');
 var gameMgmtRouter = require('./routes/gameMgmt');
 
 var bodyParser = require('body-parser');
-var port = 3000;
-var domainName = "critpen.com";
-//var domainName = "localhost";
+//var port = 443;
+//var domainName = "critpen.com";
 
 var app = express();
 
+
+let settingsStr = fs.readFileSync('/run/secrets/settings.json', 'utf8');
+var settings = JSON.parse(settingsStr);
+var domainName = settings.domainName;
+var port = settings.port;
 
 // view engine setup
 app.set('view engine', 'jade');
@@ -53,12 +59,17 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+const options = {
+  key: fs.readFileSync('/run/secrets/ironclads-server.key'),
+  cert: fs.readFileSync('/run/secrets/ironclads-server.crt')
+};
 
 // The listen method was not created as part of the framework,
 // but searching on Stackoverflow, this is the way to enable the app
 // to be run using the 'node app.js' from the command line rather than
 // using 'npm start'
 
-app.listen(port, function() {
-  console.log("Ironclads server running on http://" + domainName + ":" + port);
-});
+//app.listen(port, function() {
+//  console.log("Ironclads server running on http://" + domainName + ":" + port);
+//});
+var server = https.createServer(options, app).listen(port);

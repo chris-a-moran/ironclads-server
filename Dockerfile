@@ -3,6 +3,9 @@
 # and open the template in the editor.
 FROM node:8.11.3
 
+# Create a directory into which to place the certs at runtime
+workdir /run/secrets
+
 # Create app directory
 WORKDIR /usr/src/app
 

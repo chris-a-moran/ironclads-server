@@ -8,8 +8,11 @@ node app.js
 # This is needed the first time the project is cloned from github
 npm update
 
-# To do a docker build
+# To do a docker build/push
 docker build -t cmoran/ironclads-server .
+docker tag cmoran/ironclads-server registry.dops-lab.com/christopher.moran/ironclads-server
+echo [password] | docker login -u christopher.moran --password-stdin https://registry.dops-lab.com
+docker push registry.dops-lab.com/christopher.moran/ironclads-server
 
 # To see the image
 docker images

@@ -2,7 +2,7 @@
   window.__env = window.__env || {};
 
   // API url
-  window.__env.apiUrl = 'https://localhost';
+  window.__env.apiUrl = 'http://dops-lab.com:3000';
 
   // Base url
   window.__env.baseUrl = '/';
@@ -11,5 +11,3 @@
   // Setting this to false will disable console output
   window.__env.enableDebug = true;
 }(this));
-
-

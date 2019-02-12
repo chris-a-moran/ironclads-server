@@ -69,7 +69,7 @@ const options = {
 // to be run using the 'node app.js' from the command line rather than
 // using 'npm start'
 
-//app.listen(port, function() {
-//  console.log("Ironclads server running on http://" + domainName + ":" + port);
-//});
-var server = https.createServer(options, app).listen(port);
+app.listen(port, function() {
+  console.log("Ironclads server running on http://" + domainName + ":" + port);
+});
+//var server = https.createServer(options, app).listen(port);

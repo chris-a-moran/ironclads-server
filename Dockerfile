@@ -23,4 +23,6 @@ COPY . .
 
 EXPOSE 3000
 
+# RUN ln -s /run/secrets/env.js public/env.js
+
 CMD [ "node", "app.js" ]

@@ -1,30 +1,28 @@
-pipeline {
-    agent {
-        docker {
-            image 'node:8.11.3'
-            args '-p 3000:3000'
+node {
+    def ironcladsserver
+    git url: 'https://github.com/chris-a-moran/ironclads-server'
+  
+    stage('Build ironclads-server-image') {
+        ironcladsserver = docker.build('registry.dops-lab.com/christopher.moran/ironclads-server', '--no-cache -f Dockerfile .')
+    }
+
+    stage('Push images') {
+        docker.withRegistry('https://registry.dops-lab.com', 'dops-lab-credentials') {
+            ironcladsserver.push("latest")
         }
     }
-    environment {
-        CI = 'true'
-    }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh './jenkins/scripts/test.sh'
-            }
-        }
-        stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
-            }
-        }
-    }
+    stage ('Deploy Images') {
+		script {
+			withCredentials([usernamePassword(credentialsId: 'dops-lab-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASSWORD')]) {
+			sh '''
+    			echo "docker registry login"
+    			docker login registry.dops-lab.com -u $DOCKER_USER -p $DOCKER_PASSWORD
+    			echo "deploying stack ironclads-server with latest image"
+    			export DOCKER_HOST="tcp://172.31.20.154:12375"
+    			docker service update --image registry.dops-lab.com/christopher.moran/ironclads-server:latest ironclads-server_app
+    		  '''
+			}
+		}
+	}
+
 }

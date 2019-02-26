@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+  app:
+    image: registry.dops-lab.com/christopher.moran/ironclads-server
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - 'node.role == worker'
+    ports:
+      - 3000:3000
+    volumes:
+      - type: bind
+        source: /mnt/efs
+        target: /data
+    secrets:
+      - source: ironclads-server-key
+        target: ironclads-server.key
+      - source: ironclads-server-crt
+        target: ironclads-server.crt
+      - source: ironclads-settings
+        target: /run/secrets/settings.json
+
+secrets:
+  ironclads-server-key:
+    external: true
+  ironclads-server-crt:
+    external: true
+  ironclads-settings:
+    external: true

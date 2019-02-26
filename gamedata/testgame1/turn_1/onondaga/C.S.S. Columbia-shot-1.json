@@ -1,9 +1,9 @@
 {
     "target": "onondaga",
-    "gun": "brook2b7",
+    "gun": "brook10",
     "rolls": {
-        "toHit": 8,
-        "hitEffect": 5,
+        "toHit": 6,
+        "hitEffect": 6,
         "penetration": 0,
         "criticalPenetration": 0,
         "specialHit": 0
@@ -13,11 +13,11 @@
     "hitEffectivenessPenaltyFromFires": 0,
     "rightLeft": "right",
     "range": 1,
-    "penetrationFactor": 30,
+    "penetrationFactor": 36,
     "targetAspect": "turret",
     "gunDamaged": false,
-    "positionOfHit": "turretA",
-    "sectionOfHit": "foreship",
+    "positionOfHit": "turretZ",
+    "sectionOfHit": "aftership",
     "targetHit": true,
     "turn": 1,
     "damage": {
@@ -28,7 +28,7 @@
             "engineRestart": []
         },
         "specialHit": {
-            "message": "",
+            "message": "turret jammed 4 turns directly ahead.",
             "gunDestroyed": 0,
             "gunDamaged": []
         },
@@ -42,5 +42,5 @@
         "fires": [],
         "turningCapacity": 0
     },
-    "penetrationDifferential": 6
+    "penetrationDifferential": 12
 }
